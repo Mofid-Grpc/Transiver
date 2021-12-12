@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "Replication";
+
+package greet;
+
+service Replicator {
+  rpc ReplicateGroup (ReplicateRequest) returns (ReplicateResponse);
+
+  rpc ReplicateSingle (ReplicaItem) returns (ReplicaItem);
+}
+
+message ReplicateRequest {
+  repeated ReplicaItem replicaItems = 1;
+}
+
+message ReplicateResponse {
+  repeated ReplicaItem replicaItems = 1;
+}
+
+message ReplicaItem {
+  string title = 1;
+  string state = 2;
+}
